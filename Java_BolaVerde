@@ -1,0 +1,12 @@
+package bolaverde;
+
+public class BolaVerde {
+
+    public static void main(String[] args) {
+        double perc = 5.0 / 12 * 100;
+        
+        System.out.println("Porcentagem de Bolas Verdes: " + perc);
+        
+    }
+
+}
