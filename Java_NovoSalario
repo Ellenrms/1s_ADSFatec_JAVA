@@ -1,0 +1,26 @@
+
+package novosalario;
+import java.util.Scanner;
+
+public class NovoSalario {
+
+   
+    public static void main(String[] args) {
+         
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("NovoSalario");
+        double salarioAtual;
+        
+        System.out.println("Digite o salario atual: ");
+        salarioAtual = scanner.nextDouble();
+        
+        if  (salarioAtual <= 2000){
+             System.out.println("Salario com aumento de 10%  " +(salarioAtual + (salarioAtual*0.10)));
+        }
+        
+        else  if (salarioAtual <= 3000){    
+                System.out.println("Salario com aumento de 5%  " +(salarioAtual + (salarioAtual*0.05)));
+            } 
+    }
+    }
+
