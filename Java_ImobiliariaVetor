@@ -1,0 +1,117 @@
+package imobiliariavetor;
+import java.util.Scanner;
+
+public class ImobiliariaVetor {
+
+    public static void main(String[] args) {
+        int codigo[] = {110, 112, 130, 114, 119, 150, 160, 164};
+        //vetor é uma variavel composta hemogenea, os valores são acessados pela sua posição, os valores ocupam posiÃƒÂ§ÃƒÂµes de memÃƒÂ³ria contÃƒÂ­guas
+        //ÃƒÂ© alocado para o int 32 bits da memoria
+        // A posiÃƒÂ§ÃƒÂ£o ou indice ÃƒÂ© um numero inteiro. O indice do primeiro elemnto ÃƒÂ© 0.
+        //O tamanho de um vetor ÃƒÂ© fixo
+        char tipo[] = {'r', 'g', 'r', 'r', 'c', 'g', 'c', 'r'};
+        double aluguelbase[] = {400, 800, 600, 300, 1500, 1100, 1800, 900};
+        int status[] = {1, 1, 2, 1, 2, 1, 1, 2};
+        String prop[] = {"Ana", "Isa", "Leo", "Gil", "Bia", "Ian", "Vinicius", "Mel"};
+
+        System.out.println("Codigo Tipo Aluguel Base Status Prop");
+        for (int i = 0; i < 8; i++) {
+//            System.out.println(codigo[i] + "     "
+//                    + tipo[i] + "      "
+//                    + aluguelbase[i] + "     "
+//                    + status[i] + "     "
+//                    + prop[i]);
+
+            System.out.printf("%12d %12c %12.2f %12d %12s\n",
+                    codigo[i], tipo[i], aluguelbase[i], status[i], prop[i]);
+
+        }
+        //2)Encontre e escrevA O NOME DO PROPRIETARIO DO IMOVEL MAIS CARO.
+
+        String nomeMaior = prop[0];
+        double maiorAluguelBase = aluguelbase[0];
+        for (int i = 0; i < codigo.length; i++) {
+            if (aluguelbase[i] > maiorAluguelBase) {
+                maiorAluguelBase = aluguelbase[i];
+                nomeMaior = prop[i];
+            }
+
+        }
+        System.out.println("Maior Aluguel Base: " + maiorAluguelBase);
+        System.out.println("Nome do ProprietÃ¡rio: " + nomeMaior);
+
+        //3 Calcule e escreva a media dos alugueis 
+        double somaAl = 0, media;
+        for (int i = 0; i < codigo.length; i++) {
+            somaAl = somaAl + aluguelbase[i];
+        }
+        media = somaAl / codigo.length;
+        System.out.println("Media Aluguel: " + media);
+
+        //4) Encontre a porcentagens de imóveis ocupados.
+        //sempre if e for 
+        int contador = 0;
+        for (int i = 0; i < 8; i++) {
+            if (status[i] == 1) {
+                contador = contador + 1;
+            }
+        }
+        System.out.println("Contador: " + contador);
+        //double perc = contador/8.0 * 100;
+        double perc = (double) contador / codigo.length * 100;
+        System.out.println("A porcentagem de imoveis ocupados é:  " + perc + " %");
+    
+
+    //5) Calcule e escreva a média dos aluguéis base de imóveis ocupados.
+    double somaAlOc = 0;
+    int contadorAlOc = 0;
+    double mediaAlOc;
+    for (int i = 0; i < codigo.length; i++){
+        if (status[i] == 1){
+            somaAlOc = somaAlOc + aluguelbase[i];
+            contadorAlOc = contadorAlOc + 1;
+        }
+}
+        mediaAlOc = somaAlOc / contadorAlOc;
+        System.out.println("Média de alugueis: " + mediaAlOc);
+        
+        
+    //6) Encontre as porcentagens de imóveis de cada categoria.
+    
+    
+    
+    /*
+        7) Solicite que o usuário digite o código de um imóvel e 
+        escreva o seu aluguel final, que é calculado com 
+        a seguinte regra:
+         Imóvel residencial: aluguel base mais 5% do aluguel base; 
+         Imóvel galpão: aluguel base mais 10% do aluguel base;
+         Imóvel comercial: aluguel base mais 20% do aluguel base;
+     */
+    
+        int codDig;
+        double aluguelFinal;
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Digite o codigo");
+        codDig = scan.nextInt ();
+        
+        
+        
+        for (int i = 0; i < codigo.length; i++) {
+            if(codDig == codigo[i]){
+                if(tipo[i] == 'r'){
+                aluguelFinal = aluguelbase[i] + aluguelbase[i]*0.05;
+                } else if (tipo[i] == 'g'){
+                    aluguelFinal = aluguelbase[i] + aluguelbase[i]*0.1;
+                } else {
+                    aluguelFinal = aluguelbase [i]*0.2;
+                }
+                System.out.println("Aluguel Final:    " + aluguelFinal);
+                
+            }
+            }
+                
+            
+            
+        }
+}
