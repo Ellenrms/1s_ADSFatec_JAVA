@@ -1,0 +1,108 @@
+package folhapagamento;
+
+import java.util.Scanner;
+ 
+public class Folhapagamento { 
+
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+        String Nome[] = {"Bia", "Deo", "Leo", "Nai", "Rui", "Ivo", "Gil", "Ian", "Ana"};
+        char categoria[] = {'A', 'C', 'B', 'A', 'C', 'B', 'A', 'C', 'B'};
+        double ValVendas[] = {40000.00, 60000.00, 20000.00, 30000.00, 80000.00, 50000.00, 10000.00, 70000.00, 80000.00};
+
+        vendas ven[] = new vendas[9];
+        System.out.printf("%10s %10s %10s \n", "Vendedor", "Categoria", "Valor de Vendas");
+        for (int i = 0; i < ven.length; i++) {
+            ven[i] = new vendas();
+            ven[i].Nome = Nome[i];
+            ven[i].Categoria = categoria[i];
+            ven[i].ValVendas = ValVendas[i];
+            System.out.printf("%10s %10s %10s \n", ven[i].Nome, ven[i].Categoria, ven[i].ValVendas);
+        }
+        int opcao;
+
+        do {
+            System.out.println("Menu \n"
+                    + "1 – Meta\n"
+                    + "2 – Maior média\n"
+                    + "3 – Sair\n"
+                    + "Digite a opção desejada:");
+            opcao = scan.nextInt();
+
+            switch (opcao) {
+                case 1:
+                    int achou = 0;
+                    System.out.println("Digite a meta");
+                    double meta = scan.nextDouble();
+
+                    for (int i = 0; i < ven.length; i++) {
+                        if (ven[i].ValVendas >= meta) {
+                            System.out.println(ven[i].Nome + "   " + ven[i].Categoria);
+                            achou = 1;
+                        }
+
+                    }
+                    if (achou == 0)
+                    System.out.println("Ninguém atingiu");
+                    break;
+
+                case 2:
+                    int contA = 0,
+                     contB = 0,
+                     contC = 0;
+                    double somaA = 0,
+                     somaB = 0,
+                     somaC = 0;
+
+                    for (int i = 0; i < ven.length; i++) {
+                        if (ven[i].Categoria == 'A') {
+                            contA = contA + 1;
+                            somaA = somaA + ven[i].ValVendas;
+                        }
+                        if (ven[i].Categoria == 'B') {
+                            contB = contB + 1;
+                            somaB = somaB + ven[i].ValVendas;
+                        }
+                        if (ven[i].Categoria == 'C') {
+                            contC = contC + 1;
+                            somaC = somaC + ven[i].ValVendas;
+                        }
+                    }
+
+                    double mediaA = somaA / contA;
+                    double mediaB = somaB / contB;
+                    double mediaC = somaC / contC;
+
+                    if (mediaA > mediaB && mediaA > mediaC) {
+                        System.out.println("A média A é a MAIOR");
+                    }
+                    if (mediaB > mediaA && mediaB > mediaC) {
+                        System.out.println("A média B é a MAIOR");
+                    }
+                    if (mediaC > mediaA && mediaC > mediaB) {
+                        System.out.println("A média C é a MAIOR");
+                    }
+
+                    break;
+
+            }
+
+        } while (opcao != 3);
+    }
+}
+
+
+
+#############################################################
+
+
+
+package folhapagamento;
+public class vendas {
+   String Nome;
+   char Categoria;
+   double ValVendas;
+    
+}
+
+
