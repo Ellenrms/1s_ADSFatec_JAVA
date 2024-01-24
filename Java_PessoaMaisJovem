@@ -1,0 +1,35 @@
+package pessoamaisjovem;
+
+import java.util.Scanner;
+
+public class PessoaMaisJovem {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        String nomeMaisJovem = null;
+        int idadeMaisJovem = Integer.MAX_VALUE;
+
+        for (int i = 0; i < 5; i++) {
+            System.out.print("Digite o nome da pessoa " + (i + 1) + ": ");
+            String nome = scanner.nextLine();
+
+            System.out.print("Digite a idade da pessoa " + (i + 1) + ": ");
+            int idade = scanner.nextInt();
+            scanner.nextLine(); // Consumir a quebra de linha
+
+            if (idade < idadeMaisJovem) {
+                idadeMaisJovem = idade;
+                nomeMaisJovem = nome;
+            }
+        }
+
+        scanner.close();
+
+        if (nomeMaisJovem != null) {
+            System.out.println("A pessoa mais jovem é " + nomeMaisJovem + " com " + idadeMaisJovem + " anos.");
+        } else {
+            System.out.println("Nenhum dado foi inserido.");
+        }
+    }
+}
