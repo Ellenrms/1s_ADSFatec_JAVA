@@ -1,0 +1,49 @@
+package lojacuponsdesconto;
+import java.util.Scanner;
+
+public class LojaCuponsDesconto {
+
+    public static void main (String[] args) {
+        try (Scanner scanner = new Scanner(System.in)) {
+            for (int venda = 1; venda <= 3; venda++) {
+                System.out.println("Venda #" + venda);
+                
+                System.out.print("Digite o nome do cliente: ");
+                String nomeCliente = scanner.nextLine();
+                
+                double valorTotal = 0;
+                
+                for (int produto = 1; produto <= 3; produto++) {
+                    System.out.print("Digite o preço do produto " + produto + ": ");
+                    double precoProduto = scanner.nextDouble();
+                    
+                    System.out.print("Digite a quantidade do produto " + produto + ": ");
+                    int quantidadeProduto = scanner.nextInt();
+                    
+                    valorTotal += precoProduto * quantidadeProduto;
+                }
+                
+                int pontosGanhos = calcularPontos(valorTotal);
+                
+                System.out.println("Valor total da compra para " + nomeCliente + ": R$" + valorTotal);
+                System.out.println("Você ganhou " + pontosGanhos + " ponto(s)");
+                
+                // Limpar o buffer do scanner
+                scanner.nextLine();
+            }
+        }
+    }
+
+    public static int calcularPontos(double valorCompra) {
+        if (valorCompra < 1000) {
+            return 1;
+        } else if (valorCompra <= 2000) {
+            return 2;
+        } else {
+            return 3;
+        }
+    }
+}
+
+    
+
